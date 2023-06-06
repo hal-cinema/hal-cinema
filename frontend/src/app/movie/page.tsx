@@ -5,6 +5,8 @@ import { Styles } from '@/types/styles';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
 
+// TODO コンポーネントをちゃんと別ファイルにする
+
 const MovieContainer = () => {
     const [isMinimum, setIsMinimum] = useState(false);
     const [userFilter, setUseFilter] = useState(false);
