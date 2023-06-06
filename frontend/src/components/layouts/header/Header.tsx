@@ -1,43 +1,58 @@
-import { Button } from '@/components/elements/button/Button';
-import { Styles } from '@/types/styles';
-import React from 'react';
-import { Nav } from '../../elements/nav/Nav';
-import { Text } from '../../elements/text/Text';
-import Image from 'next/image';
+import { Button } from "@/components/elements/button/Button";
+import { Styles } from "@/types/styles";
+import React from "react";
+import { Nav } from "../../elements/nav/Nav";
+import { Text } from "../../elements/text/Text";
+import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
-  handlePushRouter: (path: string) => void;
   isActive: (path: string) => boolean;
 };
 export const Header = (props: Props) => {
-  const { handlePushRouter, isActive } = props;
+  const { isActive } = props;
   const BUTTON = [
     {
-      name: 'ホーム',
-      path: '/home',
+      name: "ホーム",
+      sub: "Home",
+      path: "/",
     },
     {
-      name: '技術',
-      path: '/tech',
+      name: "上映時間",
+      sub: "Schedule",
+      path: "/schedule",
+    },
+    {
+      name: "作品案内",
+      sub: "Movies",
+      path: "/movie",
+    },
+    {
+      name: "施設案内",
+      sub: "Theater",
+      path: "/theater",
+    },
+    {
+      name: "料金案内",
+      sub: "Price",
+      path: "/price",
+    },
+    {
+      name: "よくある質問",
+      sub: "Q&A",
+      path: "/qa",
     },
   ];
   return (
     <div style={styles.container}>
-      <Text style={styles.logo}>Learn</Text>
+      <Link href="/" style={styles.logo}>
+        HAL<Text>CINEMA</Text>
+      </Link>
       <Nav style={styles.nav}>
         {BUTTON.map((button, index) => (
-            <Button style={styles.button} key={index}  onClick={() => handlePushRouter(button.path)}>
-              {button.name}
-              {isActive(button.path) && (
-                <Image
-                  src={'/icon/button_bar.svg'}
-                  width={60}
-                  height={3}
-                  alt="button_bar"
-                  style={styles.button_bar}
-                />
-              )}
-            </Button>
+          <Link href={button.path} style={styles.button} key={index}>
+            {button.name}
+          </Link>
         ))}
       </Nav>
     </div>
@@ -46,31 +61,30 @@ export const Header = (props: Props) => {
 
 const styles: Styles = {
   container: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
-    width: '100vw',
-    backgroundColor: '#FF9933',
-    padding: '5px 20px 0 20px',
+    width: "100vw",
+    backgroundColor: "#FF9933",
+    padding: "5px 20px 0 20px",
+    display: "flex",
   },
   logo: {
-    fontSize: '30px',
-    color: '#fff',
+    fontSize: "30px",
+    color: "#fff",
   },
   nav: {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'flex-start',
+    width: "100%",
+    display: "flex",
+    alignItems: "flex-start",
   },
   button: {
-    backgroundColor: 'transparent',
-    color: '#fff',
-    padding: '10px 20px 0 20px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    position: 'relative',
+    backgroundColor: "transparent",
+    color: "#fff",
+    padding: "10px 20px 0 20px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    position: "relative",
     alignItems: "center",
-  },
-  button_bar: {
   },
 };
