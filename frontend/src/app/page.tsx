@@ -71,8 +71,5 @@ const Index: NextPage = () => {
 };
 
 const styles: Styles = {
-  container: {
-    margin: "200px 0 0 0",
-  },
 };
 export default Index;
