@@ -1,14 +1,15 @@
 import { Button } from "@/components/elements/button/Button";
 import { Styles } from "@/types/styles";
 import React from "react";
-import { Nav } from "../../elements/nav/Nav";
 import { Text } from "../../elements/text/Text";
 import Image from "next/image";
 import Link from "next/link";
+import { Flex } from "@/components/elements/box/Flex";
 
 type Props = {
   isActive: (path: string) => boolean;
 };
+
 export const Header = (props: Props) => {
   const { isActive } = props;
   const BUTTON = [
@@ -44,18 +45,25 @@ export const Header = (props: Props) => {
     },
   ];
   return (
-    <div style={styles.container}>
+    <Flex style={styles.container}>
       <Link href="/" style={styles.logo}>
         HAL<Text>CINEMA</Text>
       </Link>
-      <Nav style={styles.nav}>
+      <nav style={styles.nav}>
         {BUTTON.map((button, index) => (
-          <Link href={button.path} style={styles.button} key={index}>
-            {button.name}
+          <Link href={button.path} key={index}>
+            <Flex
+              style={styles.button}
+              direction="column"
+              justify="center"
+              align="center"
+            >
+              {button.name}
+            </Flex>
           </Link>
         ))}
-      </Nav>
-    </div>
+      </nav>
+    </Flex>
   );
 };
 
@@ -66,7 +74,6 @@ const styles: Styles = {
     width: "100vw",
     backgroundColor: "#FF9933",
     padding: "5px 20px 0 20px",
-    display: "flex",
   },
   logo: {
     fontSize: "30px",
@@ -81,10 +88,6 @@ const styles: Styles = {
     backgroundColor: "transparent",
     color: "#fff",
     padding: "10px 20px 0 20px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
     position: "relative",
-    alignItems: "center",
   },
 };
