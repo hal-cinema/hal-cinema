@@ -26,7 +26,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Header isActive={isActive} />
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );
