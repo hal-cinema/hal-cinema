@@ -6,8 +6,7 @@ import React from "react";
 import { useState } from "react";
 
 const Index: NextPage = () => {
-  const { isActive } = useCustomRouter();
-  return <Header isActive={isActive} />;
+  return <></>;
 };
 
 export default Index;
