@@ -84,9 +84,6 @@ const Index: NextPage = () => {
 };
 
 const styles: Styles = {
-  container: {
-    margin: "200px 0 0 0",
-  },
   main_contents: {
     width: "1000px",
     margin: "50px 0 0 0",
