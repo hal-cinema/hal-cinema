@@ -38,18 +38,19 @@ export const Header = (props: Props) => {
       sub: "Price",
       path: "/price",
     },
-    {
-      name: "よくある質問",
-      sub: "Q&A",
-      path: "/qa",
-    },
   ];
   return (
-    <Flex style={styles.container}>
-      <Link href="/" style={styles.logo}>
-        HAL<Text>CINEMA</Text>
-      </Link>
-      <nav style={styles.nav}>
+    <Flex style={styles.container} direction="column">
+      <Flex style={styles.top_nav}>
+        <Link href="/" style={styles.logo}>
+          HAL<Text>CINEMA</Text>
+        </Link>
+        <Flex style={styles.top_nav}>
+          <Link href="/FAQ">よくある質問</Link>
+          <Link href="/login">言語選択</Link>
+        </Flex>
+      </Flex>
+      <Flex style={styles.bottom_nav}>
         {BUTTON.map((button, index) => (
           <Link href={button.path} key={index}>
             <Flex
@@ -62,7 +63,7 @@ export const Header = (props: Props) => {
             </Flex>
           </Link>
         ))}
-      </nav>
+      </Flex>
     </Flex>
   );
 };
@@ -80,14 +81,16 @@ const styles: Styles = {
     fontSize: "30px",
     color: "#fff",
   },
-  nav: {
+  bottom_nav: {
     width: "100%",
     display: "flex",
-    alignItems: "flex-start",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    padding: "5px 20px 0 20px",
   },
   button: {
     backgroundColor: "transparent",
-    color: "#fff",
+    color: "#000",
     padding: "10px 20px 0 20px",
     position: "relative",
   },
