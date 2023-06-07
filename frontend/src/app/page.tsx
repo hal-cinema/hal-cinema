@@ -10,6 +10,17 @@ import React from "react";
 import { Flex } from "@/components/elements/box/Flex";
 
 const Index: NextPage = () => {
+  const MAIN_NEWS = [
+    {
+      backdrop_path: "/home/mainnews1.png",
+    },
+    {
+      backdrop_path: "/home/mainnews1.png",
+    },
+    {
+      backdrop_path: "/home/mainnews1.png",
+    },
+  ];
   const MOVIES = [
     {
       poster_path: "/home/movie1.png",
@@ -56,16 +67,18 @@ const Index: NextPage = () => {
 
   return (
     <Flex style={styles.container} direction="column" align="center">
-      <MainNews />
-      <Flex>
+      <MainNews newsList={MAIN_NEWS} />
+      <Flex style={styles.main_contents} justify="space-between">
         <MovieList movies={MOVIES} label={"上映中映画"} />
         <MovieList movies={MOVIES} label={"公開予定映画"} />
       </Flex>
-      <Flex>
-        <Ranking movies={MOVIES} label={"ランキング"}/>
+      <Flex style={styles.main_contents} justify="space-between">
+        <Ranking movies={MOVIES} label={"ランキング"} />
         <AdvertisementList advertisements={ADVERTISEMENTS} />
       </Flex>
-      <SubNewsList newsList={SUB_NEWS} label={"ニュース"}/>
+      <Flex style={styles.main_contents} justify="space-between">
+        <SubNewsList newsList={SUB_NEWS} label={"ニュース"}/>
+      </Flex>
     </Flex>
   );
 };
@@ -74,5 +87,10 @@ const styles: Styles = {
   container: {
     margin: "200px 0 0 0",
   },
+  main_contents: {
+    width: "1000px",
+    margin: "50px 0 0 0",
+  },
 };
+
 export default Index;
