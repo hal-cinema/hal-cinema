@@ -76,7 +76,16 @@ export const Header = (props: Props) => {
         </Link>
         <Flex direction="row" style={styles.settings_nav}>
           <Link style={styles.faq} href="/FAQ">？</Link>
-          <Link style={styles.lang} href="/login">言語選択</Link>
+          <Link style={styles.lang} href="/login">
+            <Image
+              src={'/header/language.svg'}
+              width={18}
+              height={18}
+              alt='ʕ◔ϖ◔ʔ'
+              style={{marginRight: '10px'}}
+            />
+            言語選択
+          </Link>
         </Flex>
       </Flex>
       <Flex style={!isScrolled ? styles.bottom_nav : styles.scrolled_nav}>
