@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { Text } from "../../elements/text/Text"
 import Link from "next/link"
 import { Flex } from "@/components/elements/box/Flex"
+import Image from "next/image"
 
 type Props = {
   isActive: (path: string) => boolean
@@ -39,26 +40,31 @@ export const Header = (props: Props) => {
     {
       name: "ホーム",
       sub: "Home",
+      icon_path: '/header/home.svg',
       path: "/",
     },
     {
       name: "上映スケジュール",
       sub: "Schedule",
+      icon_path: '/header/schedule.svg',
       path: "/schedule",
     },
     {
       name: "施設案内",
       sub: "Theater",
+      icon_path: '/header/theater.svg',
       path: "/theater",
     },
     {
       name: "作品案内",
       sub: "Movies",
+      icon_path: '/header/movie.svg',
       path: "/movie",
     },
     {
       name: "料金案内",
       sub: "Price",
+      icon_path: '/header/price.svg',
       path: "/price",
     },
   ]
@@ -82,6 +88,14 @@ export const Header = (props: Props) => {
               justify="center"
               align="center"
             >
+              {!isScrolled &&
+              <Image
+                src={button.icon_path}
+                width={40}
+                height={40}
+                alt="ʕ◔ϖ◔ʔ"
+                style={{marginBottom: '10px'}}
+              />}
               {button.name}
             </Flex>
           </Link>
