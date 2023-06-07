@@ -1,0 +1,237 @@
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.content {
+  width: 700px;
+  margin: 67px auto 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  color: #fff;
+  font-size: .6em;
+}
+
+.infoBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.infoBox:first-child {
+  border-bottom: 1px solid #fff7;
+}
+
+.infoBox > p {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.infoIcon {
+  display: inline-block;
+  padding: 5px;
+  background-color: #eee;
+  color: #666;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.typeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 25px;
+  background-color: #eee;
+  color: #666;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.infoBox > p:nth-child(1) .typeIcon {
+  color: rgb(255, 119, 0);
+}
+
+.infoBox > p:nth-child(2) .typeIcon {
+  color: rgb(0, 85, 255);
+}
+
+.infoBox > p:nth-child(3) .typeIcon {
+  line-height: 12px;
+  text-align: center;
+  font-size: .5em;
+  color: rgb(255, 60, 0);
+}
+
+.scheduleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 45px;
+  margin: 50px auto 0;
+  border-radius: 10px;
+  background-color: #eee;
+  min-height: 150px;
+  max-width: 900px;
+  position: relative;
+}
+
+.scheduleContainer .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 108px;
+  border-radius: 0 5px 5px 0;
+  color: #ddd;
+  font-weight: bold;
+  font-size: 1.5em;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.scheduleContainer .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 108px;
+  border-radius: 5px 0 0 5px;
+  color: #ddd;
+  font-weight: bold;
+  font-size: 1.5em;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.scheduleContainer .right:hover,
+.scheduleContainer .left:hover {
+  background-color: #2A2D55;
+  color: #fff;
+}
+
+.scheduleContainer .days {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.scheduleContainer .day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 5px;
+  width: 107px;
+  height: 112px;
+  background-color: #fff;
+  color: #2A2D55;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.scheduleContainer .day:first-child {
+  width: 125px;
+  height: 125px;
+  background-color: #CDD0EF;
+}
+
+.scheduleContainer .day span {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.scheduleContainer .day span:first-child {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.movieTitle {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  margin-top: 50px;
+}
+
+.movieInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 98%;
+  background-color: #eee;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.movieImg {
+  display: block;
+  width: 100px;
+  height: 140px;
+}
+
+.movieImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.screenInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+  height: 120px;
+  margin-left: 14px;
+  background-color: #fff;
+  padding: 5px;
+}
+
+.screen {
+  width: 110px;
+  text-align: center;
+  background-color: #666;
+  color: #fff;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.screenIMAX {
+  background-color: #3874c2;
+}
+
+.screenInfo .screenTime span {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.screenInfo .screenSales {
+  transform: translateX(-5px);
+  font-weight: bold;
+}
+
+.screenInfo .screenOnSale {
+  color: #3874CB;
+}
+
+.screenInfo .screenLow {
+  color: #C23F38;
+}
+
+.screenInfo .screenSold {
+  color: #666;
+}
