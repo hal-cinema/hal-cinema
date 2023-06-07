@@ -74,6 +74,7 @@ const styles: Styles = {
     width: "100vw",
     backgroundColor: "#FF9933",
     padding: "5px 20px 0 20px",
+    zIndex: 50
   },
   logo: {
     fontSize: "30px",
