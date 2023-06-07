@@ -11,14 +11,15 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";
 import { Styles } from "@/types/styles";
 import Image from "next/image";
+import { MainNewsThumb } from "@/types/movies";
 
-export const MainNews = () => {
-  const IMAGES = [
-    { name: "image1", src: "https://picsum.photos/id/1018/1000/600/" },
-    { name: "image2", src: "https://picsum.photos/id/1015/1000/600/" },
-    { name: "image3", src: "https://picsum.photos/id/1019/1000/600/" },
-    { name: "image4", src: "https://picsum.photos/id/1018/1000/600/" },
-  ];
+export type Props = {
+  newsList: MainNewsThumb[];
+};
+
+export const MainNews = (props: Props) => {
+  const { newsList } = props;
+
   return (
     <Swiper
       dir="rtl"
@@ -26,12 +27,20 @@ export const MainNews = () => {
       pagination={{
         clickable: true,
       }}
+      loop={true}
       modules={[Navigation, Pagination]}
       style={styles.container}
+      spaceBetween={-264}
+      initialSlide={1}
     >
-      {IMAGES.map((image, index) => (
+      {newsList.map((news, index) => (
         <SwiperSlide key={index} style={styles.slide}>
-          <Image src={"/next.svg"} alt={image.name} width={400} height={200} />
+          <Image
+            src={news.backdrop_path}
+            alt={news.backdrop_path}
+            width={1000}
+            height={550}
+          />
         </SwiperSlide>
       ))}
     </Swiper>
@@ -41,9 +50,11 @@ export const MainNews = () => {
 const styles: Styles = {
   container: {
     width: "100%",
-    height: "200px",
+    height: "550px",
   },
   slide: {
     width: "100%",
+    display: "flex",
+    justifyContent: "center",
   },
 };

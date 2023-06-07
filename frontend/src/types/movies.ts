@@ -13,3 +13,4 @@ export type Movie = {
 };
 
 export type MovieThumb = Pick<Movie, "poster_path" | "title">;
+export type MainNewsThumb = Pick<Movie, "backdrop_path">;
