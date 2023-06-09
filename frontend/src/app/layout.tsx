@@ -1,5 +1,8 @@
+"use client";
+import { Header } from "@/components/layouts/header/Header";
+import { useCustomRouter } from "@/hooks/useCustomRouter";
 import { Inter } from "next/font/google";
-
+import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -12,9 +15,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { isActive } = useCustomRouter();
   return (
     <html lang="ja">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <meta charSet="utf-8" />
+        <title>{metadata.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/globals.css" />
+      </head>
+      <body className={inter.className}>
+        <Header isActive={isActive} />
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
