@@ -1,5 +1,3 @@
-"use client";
-import { Header } from "@/components/layouts/header/Header";
 import { useCustomRouter } from "@/hooks/useCustomRouter";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -15,7 +13,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isActive } = useCustomRouter();
   return (
     <html lang="ja">
       <head>
@@ -25,10 +22,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/globals.css" />
       </head>
       <body className={inter.className}>
-        <Header isActive={isActive} />
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );
