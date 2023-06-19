@@ -1,6 +1,6 @@
 import { Movie } from '@/types/movies';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Response } from "@/types/Response";
+import { Response } from "@/types/response";
 
 class BaseApiClient {
     private static readonly baseUrl = "/api/v1/";
