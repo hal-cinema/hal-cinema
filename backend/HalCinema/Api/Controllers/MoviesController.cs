@@ -26,7 +26,7 @@ public class MoviesController : ControllerBase
         {
             query = query.Where(item => item.Id > nextPageToken);
         }
-        var items = await query.OrderBy(item => item.Id).Take(Limit).ToListAsync();
+        var items = await query.OrderBy(item => item.Id).Take(Limit).Include(x => x.Genres).ToListAsync();
         return new PageableResponse(items.Count == Limit ? items.Last().Id : null, null, items );
     }
 }
