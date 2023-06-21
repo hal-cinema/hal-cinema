@@ -2,15 +2,14 @@ export type Movie = {
   id?: number;
   title: string;
   overview: string;
-  release_date: string;
-  backdrop_path: string;
-  poster_path: string;
+  releaseDate: string;
+  backdropPath: string;
+  posterPath: string;
   popularity: number;
-  video_path: string;
-  is_adult: boolean;
-  runtime_min: number;
-  created_at?: string;
+  videoPath: string;
+  isAdult: boolean;
+  runtimeMin: number;
 };
 
-export type MovieThumb = Pick<Movie, "poster_path" | "title">;
-export type MainNewsThumb = Pick<Movie, "backdrop_path">;
+export type MovieThumb = Pick<Movie, "posterPath" | "title">;
+export type MainNewsThumb = Pick<Movie, "backdropPath">;

@@ -36,8 +36,8 @@ export const MainNews = (props: Props) => {
       {newsList.map((news, index) => (
         <SwiperSlide key={index} style={styles.slide}>
           <Image
-            src={news.backdrop_path}
-            alt={news.backdrop_path}
+            src={news.backdropPath}
+            alt={news.backdropPath}
             width={1000}
             height={550}
           />
