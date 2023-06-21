@@ -7,10 +7,10 @@ namespace Api.Controllers;
 
 [Route("api/v1/[controller]")]
 [ApiController]
-public class MovieController : ControllerBase
+public class MoviesController : ControllerBase
 {
     private readonly CinemaContext _context;
-    public MovieController(CinemaContext context)
+    public MoviesController(CinemaContext context)
     {
         _context = context;
     }
