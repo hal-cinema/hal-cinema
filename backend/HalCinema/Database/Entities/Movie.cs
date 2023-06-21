@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Database.Entities;
@@ -26,7 +25,6 @@ public class Movie
     [MinLength(1)]
     public string Title { set; get; }
     
-    [MinLength(1)]
     public string Overview { set; get; }
     
     [MinLength(1)]
@@ -35,10 +33,8 @@ public class Movie
     [MinLength(1)]
     public string VideoPath { set; get; }
     
-    [MinLength(1)] 
     public string DirectorSummary { get; set; }
-
-    [MinLength(1)]
+    
     public string PerformerSummary { set; get; }
 
     [Range(0, int.MaxValue)]

@@ -9,7 +9,8 @@ public class CinemaContext: DbContext
     // MEMO
     // DateTimeはJST
     
-    public CinemaContext(DbContextOptions<CinemaContext> options) : base(options) { }
+    public CinemaContext(string connectionString) : this(new DbContextOptionsBuilder().UseNpgsql(connectionString).Options) { }
+    public CinemaContext(DbContextOptions options) : base(options) { }
     public DbSet<Movie> Movies { set; get; } = null!;
     public DbSet<Genre> Genres { set; get; } = null!;
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
