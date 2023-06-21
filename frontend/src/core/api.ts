@@ -54,7 +54,7 @@ class BaseApiClient {
 
 // TODO: Add more methods for other endpoints
 
-class MovieClient extends BaseApiClient {
+class ApiClient extends BaseApiClient {
     public static async getMovies(): Promise<Response<Movie[]>> {
         return this.get<Movie[]>('movies');
     }
