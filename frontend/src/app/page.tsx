@@ -8,6 +8,7 @@ import { Styles } from "@/types/styles";
 import { NextPage } from "next";
 import React from "react";
 import { Flex } from "@/components/elements/box/Flex";
+import { Header } from "@/components/layouts/header/Header";
 
 const Index: NextPage = () => {
   const MAIN_NEWS = [
@@ -66,20 +67,23 @@ const Index: NextPage = () => {
   ];
 
   return (
-    <Flex style={styles.container} direction="column" align="center">
-      <MainNews newsList={MAIN_NEWS} />
-      <Flex style={styles.main_contents} justify="space-between">
-        <MovieList movies={MOVIES} label={"上映中映画"} />
-        <MovieList movies={MOVIES} label={"公開予定映画"} />
+    <>
+      <Header/>
+      <Flex style={styles.container} direction="column" align="center">
+        <MainNews newsList={MAIN_NEWS} />
+        <Flex style={styles.main_contents} justify="space-between">
+          <MovieList movies={MOVIES} label={"上映中映画"} />
+          <MovieList movies={MOVIES} label={"公開予定映画"} />
+        </Flex>
+        <Flex style={styles.main_contents} justify="space-between">
+          <Ranking movies={MOVIES} label={"ランキング"} />
+          <AdvertisementList advertisements={ADVERTISEMENTS} />
+        </Flex>
+        <Flex style={styles.main_contents} justify="space-between">
+          <SubNewsList newsList={SUB_NEWS} label={"ニュース"} />
+        </Flex>
       </Flex>
-      <Flex style={styles.main_contents} justify="space-between">
-        <Ranking movies={MOVIES} label={"ランキング"} />
-        <AdvertisementList advertisements={ADVERTISEMENTS} />
-      </Flex>
-      <Flex style={styles.main_contents} justify="space-between">
-        <SubNewsList newsList={SUB_NEWS} label={"ニュース"}/>
-      </Flex>
-    </Flex>
+    </>
   );
 };
 
