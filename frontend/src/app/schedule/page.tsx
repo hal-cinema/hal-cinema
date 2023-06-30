@@ -1,10 +1,12 @@
 "use client";
 import scheduleStyle from "@/app/schedule/schedule.module.css";
 import { Header } from "@/components/layouts/header/Header";
+import { useSchewdule } from "./useSchedule";
 
-const Schedule = 
+const Schedule = () => {
+  const weeks = useSchewdule();
+  console.log(weeks);
 
-() => {
   return (
     <>
       <Header />
@@ -46,34 +48,12 @@ const Schedule =
             <span>＜</span>
           </div>
           <div className={scheduleStyle.days}>
-            <div className={scheduleStyle.day}>
-              <span>6/7</span>
-              <span>（水）</span>
-            </div>
-            <div className={scheduleStyle.day}>
-              <span>6/8</span>
-              <span>（木）</span>
-            </div>
-            <div className={scheduleStyle.day}>
-              <span>6/9</span>
-              <span>（金）</span>
-            </div>
-            <div className={scheduleStyle.day}>
-              <span>6/10</span>
-              <span>（土）</span>
-            </div>
-            <div className={scheduleStyle.day}>
-              <span>6/11</span>
-              <span>（日）</span>
-            </div>
-            <div className={scheduleStyle.day}>
-              <span>6/12</span>
-              <span>（月）</span>
-            </div>
-            <div className={scheduleStyle.day}>
-              <span>6/13</span>
-              <span>（火）</span>
-            </div>
+            {weeks.map((week) => (
+              <div className={scheduleStyle.day}>
+                <span>{week.date}</span>
+                <span>（{week.day}）</span>
+              </div>
+            ))}
           </div>
           <div className={scheduleStyle.right}>
             <span>＞</span>
@@ -157,7 +137,11 @@ const Schedule =
               <img src="/speedMovie.png" />
             </div>
             <div className={scheduleStyle.screenInfo}>
-              <div className={`${scheduleStyle.screen} ${scheduleStyle.screenIMAX}`}>IMAX</div>
+              <div
+                className={`${scheduleStyle.screen} ${scheduleStyle.screenIMAX}`}
+              >
+                IMAX
+              </div>
               <div className={scheduleStyle.screenTime}>
                 <span>9:50</span> ~ 12:25
               </div>
@@ -168,7 +152,11 @@ const Schedule =
               </div>
             </div>
             <div className={scheduleStyle.screenInfo}>
-              <div className={`${scheduleStyle.screen} ${scheduleStyle.screenIMAX}`}>IMAX</div>
+              <div
+                className={`${scheduleStyle.screen} ${scheduleStyle.screenIMAX}`}
+              >
+                IMAX
+              </div>
               <div className={scheduleStyle.screenTime}>
                 <span>16:15</span> ~ 18:50
               </div>
