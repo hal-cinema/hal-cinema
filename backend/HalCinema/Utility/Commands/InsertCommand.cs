@@ -59,15 +59,16 @@ public class InsertCommand : AsyncCommand<InsertSettings>
     {
         foreach (var baseMovie in moviesList)
         {
-            var detail = await tmDbClient.GetMovieAsync(baseMovie.Id, settings.Language, null, MovieMethods.Credits | MovieMethods.ReleaseDates);
+            var detail = await tmDbClient.GetMovieAsync(baseMovie.Id, settings.Language, null, MovieMethods.Credits | MovieMethods.ReleaseDates | MovieMethods.Videos);
             var movie = new Movie(
                 baseMovie.Title,
                 baseMovie.Overview,
                 baseMovie.ReleaseDate ?? DateTime.MinValue,
                 baseMovie.BackdropPath,
                 baseMovie.PosterPath,
+                detail.Videos?.Results.Where(x => x.Type == "Trailer" && x.Site == "YouTube").Select(x => x.Key).FirstOrDefault(),
                 baseMovie.Adult,
-                detail.Runtime ?? 0,
+                detail.Runtime ?? int.MaxValue,
                 DateTime.Now,
                 string.Join("/", detail.Credits.Crew.Select(y => y.Name)),
                 string.Join("/", detail.Credits.Cast.Select(y => y.Name))

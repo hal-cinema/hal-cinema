@@ -5,18 +5,19 @@ namespace Database.Entities;
 
 public class Movie
 {
-    public Movie(string title, string overview, DateTime releaseDate, string backDropPath, string videoPath, bool isAdult, int runtimeMinutes, DateTime createAt, string directorSummary, string performerSummary)
+    public Movie(string title, string overview, DateTime releaseDate, string backDropPath, string posterPath, string? youtubeId, bool isAdult, int runtimeMinutes, DateTime createAt, string directorSummary, string performerSummary)
     {
         Title = title;
         Overview = overview;
         ReleaseDate = releaseDate;
         BackDropPath = backDropPath;
-        VideoPath = videoPath;
+        YoutubeId = youtubeId;
         IsAdult = isAdult;
         RuntimeMinutes = runtimeMinutes;
         CreateAt = createAt;
         DirectorSummary = directorSummary;
         PerformerSummary = performerSummary;
+        PosterPath = posterPath;
     }
 
     [Key]
@@ -31,7 +32,10 @@ public class Movie
     public string BackDropPath { set; get; }
     
     [MinLength(1)]
-    public string VideoPath { set; get; }
+    public string PosterPath { set; get; }
+    
+    [MinLength(1)]
+    public string? YoutubeId { set; get; }
     
     public string DirectorSummary { get; set; }
     
