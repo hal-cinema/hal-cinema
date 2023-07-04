@@ -26,7 +26,7 @@ public class ScheduleController : ControllerBase
         {
             query = query.Where(item => item.Id > nextPageToken);
         }
-        var items = await query.OrderBy(item => item.Id).Take(Limit).Include(x => x.Movie).ToListAsync();
+        var items = await query.OrderBy(item => item.Id).Take(Limit).Include(x => x.Movie).ThenInclude(x => x.Genres).ToListAsync();
         return Ok(new PageableResponse(items.Count == Limit ? items.Last().Id : null, null, items));
     }
 }
