@@ -9,7 +9,7 @@ import Image from "next/image";
 import { useCustomRouter } from "@/hooks/useCustomRouter";
 
 export const Header = () => {
-  const { isActive } = useCustomRouter();
+  const { IsActive } = useCustomRouter();
   // hookで用意してる
   // const [selectedButton, setSelectedButton] = useState("/")
 
@@ -99,7 +99,7 @@ export const Header = () => {
         {BUTTON.map((button, index) => (
           <Link href={button.path} key={index}>
             <Flex
-              style={isActive(button.path) ? selectedButtonStyle : buttonStyle}
+              style={IsActive(button.path) ? selectedButtonStyle : buttonStyle}
               direction="column"
               justify="center"
               align="center"

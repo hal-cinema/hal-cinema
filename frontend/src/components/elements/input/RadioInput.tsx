@@ -1,18 +1,26 @@
-import React, { ComponentProps, forwardRef } from 'react';
-import { Input } from './Input';
-import { Text } from '../text/Text';
+import React, { ComponentProps, forwardRef } from "react";
+import { Input } from "./Input";
+import { Text } from "../text/Text";
+import { Styles } from "@/types/styles";
 
 type Props = {
   children: React.ReactNode;
-} & ComponentProps<'input'>;
+  styles?: Styles;
+} & ComponentProps<"input">;
 
+// eslint-disable-next-line react/display-name
 export const RadioInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const { children, ...inputProps } = props;
+  const { children,styles,...inputProps } = props;
   return (
-    <label>
-      <Text>{children}</Text>
-      {/* <Input {...inputProps} type={'radio'} style={{ display: 'none' }} ref={null} /> */}
-      <Input {...inputProps} type={'radio'} ref={ref} />
+    <label style={{...styles?.radioCommonContainer,...styles?.radioContainer}}>
+      <Text >{children}</Text>
+      <Input
+        {...inputProps}
+        type={"radio"}
+        style={{ display: "none" }}
+        ref={ref}
+      />
+      {/* <Input {...inputProps} type={"radio"} ref={ref} /> */}
     </label>
   );
 });

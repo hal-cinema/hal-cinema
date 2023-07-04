@@ -5,7 +5,7 @@ import { Styles } from '@/types/styles';
 type Props = {
   children: React.ReactNode;
   label?: string;
-  onSubmit: (e?: BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>;
+  onSubmit?: (e?: BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>;
 }
 
 export const Form = (props: Props) => {
