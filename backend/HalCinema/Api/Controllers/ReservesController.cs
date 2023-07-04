@@ -21,6 +21,18 @@ public class ReserveController : ControllerBase
     }
     
     [Authorize]
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Reserve>> Get(int id)
+    {
+        var user = await _userManager.GetUserAsync(HttpContext.User);
+        if (user == null) return StatusCode(500, "User is null"); // TODO ミドルウェアに委託
+
+        var reserve = await _cinemaContext.Reserves.Include(x => x.Tickets).ThenInclude(x => x.Seat).FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
+        if (reserve == null) return NotFound();
+        return reserve;
+    }
+    
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Response>> Post([FromBody] ReserveRequest requestRequest) // 学校課題のためクレカの決済はしない
     {
