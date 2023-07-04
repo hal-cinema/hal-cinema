@@ -1,18 +1,20 @@
-using System.ComponentModel.DataAnnotations;
+using Database.Entities;
 
 namespace Api.Models;
 
+public class SeatRequest
+{
+    public int SeatId { set; get; }
+    public SeatType SeatType { set; get; }
+}
+
 public class ReserveRequest
 {
-    public ReserveRequest(List<int> seatIds, string creditCard)
+    public ReserveRequest(List<SeatRequest> seats)
     {
-        SeatIds = seatIds;
-        CreditCard = creditCard;
+        Seats = seats;
     }
+
     public int ScheduleId { set; get; }
-    
-    [MinLength(14)]
-    [MaxLength(16)]
-    public string CreditCard { set; get; } // 学校の課題のため、カードの決済はしないので雑に送ってみる
-    public List<int> SeatIds { get; set; }
+    public List<SeatRequest> Seats { get; set; }
 }

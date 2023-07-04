@@ -8,15 +8,23 @@ namespace Api.Controllers;
 
 [Route("api/v1/[controller]")]
 [ApiController]
-public class ScheduleController : ControllerBase
+public class SchedulesController : ControllerBase
 {
     private readonly CinemaContext _context;
     private const int Limit = 10;
-    public ScheduleController(CinemaContext context)
+    public SchedulesController(CinemaContext context)
     {
         _context = context;
     }
     
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Schedule>> Get(int id)
+    {
+        var schedule = await _context.Schedules.Include(x => x.Movie).ThenInclude(x => x.Genres).FirstOrDefaultAsync(x => x.Id == id);
+        if (schedule == null) return NotFound();
+        return schedule;
+    }
+
     [HttpGet]
     public async Task<ActionResult<PageableResponse>> Get(int? nextPageToken) 
     {

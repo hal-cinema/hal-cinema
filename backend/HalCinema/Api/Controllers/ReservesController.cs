@@ -10,11 +10,11 @@ namespace Api.Controllers;
 
 [Route("api/v1/[controller]")]
 [ApiController]
-public class ReserveController : ControllerBase
+public class ReservesController : ControllerBase
 {
     private readonly CinemaContext _cinemaContext;
     private readonly UserManager<User> _userManager;
-    public ReserveController(CinemaContext cinemaContext, UserManager<User> userManager)
+    public ReservesController(CinemaContext cinemaContext, UserManager<User> userManager)
     {
         _cinemaContext = cinemaContext;
         _userManager = userManager;
@@ -34,7 +34,7 @@ public class ReserveController : ControllerBase
     
     [Authorize]
     [HttpPost]
-    public async Task<ActionResult<Response>> Post([FromBody] ReserveRequest requestRequest) // 学校課題のためクレカの決済はしない
+    public async Task<ActionResult<Response>> Post([FromBody] ReserveRequest requestRequest) // 学校課題なので決済はしない
     {
         var transaction = await _cinemaContext.Database.BeginTransactionAsync();
         try
@@ -42,13 +42,15 @@ public class ReserveController : ControllerBase
             var user = await _userManager.GetUserAsync(HttpContext.User);
             if (user == null) return StatusCode(500, "User is null"); // TODO ミドルウェアに委託
 
-            var seats = _cinemaContext.Seats.Where(x => requestRequest.SeatIds.Contains(x.Id)).AsNoTracking().ToList();
-            _cinemaContext.Reserves.Add(new Reserve(Reserve.ComputeCardHash(requestRequest.CreditCard))
+            var seatIds = requestRequest.Seats.Select(x => x.SeatId);
+            var seats = _cinemaContext.Seats.Where(x => seatIds.Contains(x.Id)).AsNoTracking().ToList();
+            _cinemaContext.Reserves.Add(new Reserve
             {
                 UserId = user.Id,
                 Tickets = seats.Select(x => new Ticket
                 {
                     SeatId = x.Id,
+                    SeatType = requestRequest.Seats.First(y => y.SeatId == x.Id).SeatType,
                     ScheduleId = requestRequest.ScheduleId
                 }).ToList()
             });
@@ -60,7 +62,7 @@ public class ReserveController : ControllerBase
         catch (DbUpdateException)
         {
             await transaction.RollbackAsync();
-            return Conflict(new Response(false, "Booking failed", null));
+            return Conflict(new Response(false, "Booking", null));
         }
         catch (Exception)
         {
