@@ -18,6 +18,7 @@ public class CinemaContext: IdentityDbContext<User, Role, int>
     public DbSet<Seat> Seats { set; get; } = null!;
     public DbSet<Schedule> Schedules { set; get; } = null!;
     public DbSet<Reserve> Reserves { set; get; } = null!;
+    public DbSet<Ticket> Tickets { set; get; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

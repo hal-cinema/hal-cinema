@@ -34,7 +34,6 @@ public class Movie
     [MinLength(1)]
     public string PosterPath { set; get; }
     
-    [MinLength(1)]
     public string? YoutubeId { set; get; }
     
     public string DirectorSummary { get; set; }

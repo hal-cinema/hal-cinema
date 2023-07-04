@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Database.Entities;
 
-[Index(nameof(ScreenId), nameof(Row), nameof(Column), IsUnique = true)]
+[Index(nameof(ScreenId), nameof(RowNumber), nameof(ColumnNumber), IsUnique = true)]
 public class Seat
 {
     [Key]
     public int Id { set; get; }
     public int ScreenId { set; get; }
     
-    public int Row { set; get; }
-    public int Column { set; get; }
+    public int RowNumber { set; get; }
+    public int ColumnNumber { set; get; }
     
     [ForeignKey(nameof(ScreenId))]
     public Screen? ScreenNavigation { set; get; }
