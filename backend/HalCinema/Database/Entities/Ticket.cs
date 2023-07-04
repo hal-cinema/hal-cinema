@@ -4,6 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Database.Entities;
 
+public enum SeatType
+{
+    Adult,
+    CollegeStudent,
+    HighSchoolStudent,
+    Child
+}
+
 // 論理削除せずに物理削除する、今後変更履歴を表示したいという要件が出た時にキャンセル履歴テーブルを作る
 [Index(nameof(ScheduleId), nameof(SeatId), IsUnique = true)]
 public class Ticket
@@ -13,6 +21,8 @@ public class Ticket
     public int ReserveId { set; get; }
     public int SeatId { set; get; }
     public int ScheduleId { set; get; }
+    public int Price { set; get; }
+    public SeatType SeatType { set; get; }
 
     [ForeignKey(nameof(SeatId))]
     public Seat? Seat { set; get; }
