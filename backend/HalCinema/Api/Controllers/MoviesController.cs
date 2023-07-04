@@ -17,6 +17,14 @@ public class MoviesController : ControllerBase
         _context = context;
     }
 
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Movie>> Get(int id)
+    {
+        var movie = await _context.Movies.Include(x => x.Genres).FirstOrDefaultAsync(x => x.Id == id);
+        if (movie == null) return NotFound();
+        return movie;
+    }
+    
     [HttpGet]
     public async Task<ActionResult<PageableResponse>> Get(int? nextPageToken)
     {
