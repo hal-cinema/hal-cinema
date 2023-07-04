@@ -1,4 +1,5 @@
 using Database;
+using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -22,8 +23,100 @@ public class InsertCommand : AsyncCommand<InsertSettings>
         await DeleteAndCreateDatabase(dbContext);
 
         var genresList = await FetchAndStoreGenres(tmDbClient, dbContext, settings.Language);
-        var totalPages = await FetchAndStoreMovies(tmDbClient, dbContext, genresList, settings);
-        return totalPages;
+        await FetchAndStoreMovies(tmDbClient, dbContext, genresList, settings);
+        await GenerateDummyScreenSeat(dbContext);
+        await GenerateDummySchedule(dbContext, 3, 20);
+        return 0;
+    }
+    private static async Task GenerateDummyScreenSeat(CinemaContext dbContext)
+    {
+        dbContext.Screens.Add(new Screen("スクリーン1")
+        {
+            ScreenType = ScreenType.Large,
+            Seats = GenerateDummySeat(10, 7).ToList()
+        });
+        dbContext.Screens.Add(new Screen("スクリーン2")
+        {
+            ScreenType = ScreenType.Large,
+            Seats = GenerateDummySeat(10, 7).ToList()
+        });
+        dbContext.Screens.Add(new Screen("スクリーン3")
+        {
+            ScreenType = ScreenType.Large,
+            Seats = GenerateDummySeat(10, 7).ToList()
+        });
+        dbContext.Screens.Add(new Screen("スクリーン3")
+        {
+            ScreenType = ScreenType.Medium,
+            Seats = GenerateDummySeat(8, 5).ToList()
+        });
+        dbContext.Screens.Add(new Screen("スクリーン5")
+        {
+            ScreenType = ScreenType.Medium,
+            Seats = GenerateDummySeat(8, 5).ToList()
+        });
+        dbContext.Screens.Add(new Screen("スクリーン6")
+        {
+            ScreenType = ScreenType.Small,
+            Seats = GenerateDummySeat(5, 4).ToList()
+        });
+        dbContext.Screens.Add(new Screen("スクリーン7")
+        {
+            ScreenType = ScreenType.Small,
+            Seats = GenerateDummySeat(5, 4).ToList()
+        });
+        dbContext.Screens.Add(new Screen("スクリーン8")
+        {
+            ScreenType = ScreenType.Small,
+            Seats = GenerateDummySeat(5, 4).ToList()
+        });
+        await dbContext.SaveChangesAsync();
+    }
+    
+    private static async Task GenerateDummySchedule(CinemaContext dbContext, int daysToGenerate, int maxMoviesPerDay)
+    {
+        var cached = DateTime.Now;
+        var timeSpan = TimeSpan.FromMinutes(20);
+        var now = new DateTime(cached.Year, cached.Month, cached.Day, 9, 0, 0);
+        var movies = await dbContext.Movies.AsNoTracking().ToListAsync();
+        for (var i = 0; i < daysToGenerate; i++)
+        {
+            var dateTime = now.AddDays(i);
+            var moviesPerDayQueue = new Queue<Movie>(movies.Select(x => (x, Guid.NewGuid())).OrderBy(x => x.Item2).Take(maxMoviesPerDay).Select(x => x.x));
+            
+            var schedules = dbContext.Screens.AsNoTracking().ToList().Select(x =>
+            {
+                var schedules = new List<Schedule>();
+                while (moviesPerDayQueue.Count > 0 && (schedules.Count < 1 || (schedules.Count > 0 && schedules.Last().EndAt < dateTime.AddHours(23))))
+                {
+                    var movie = moviesPerDayQueue.Dequeue();
+                    var startAt = schedules.Count <= 0 ? dateTime : schedules.Last().EndAt.AddMinutes(timeSpan.Minutes);
+                    schedules.Add(new Schedule
+                    {
+                        StartAt = startAt,
+                        EndAt = startAt.AddMinutes(movie.RuntimeMinutes),
+                        MovieId = movie.Id,
+                        ScreenId = x.Id
+                    });
+                }
+                return schedules;
+            }).SelectMany(x => x);
+            
+            dbContext.Schedules.AddRange(schedules);
+            await dbContext.SaveChangesAsync();
+        }
+    }
+    
+    private static IEnumerable<Seat> GenerateDummySeat(int rowLength, int columnLength)
+    {
+        return Enumerable.Range(0, rowLength).Select(x =>
+        {
+            return Enumerable.Range(0, columnLength).Select(y => new Seat
+            {
+                RowNumber = x,
+                ColumnNumber = y
+            });
+        }).SelectMany(x => x);
     }
 
     private static async Task DeleteAndCreateDatabase(DbContext dbContext) // TODO これはテスト用のコードなので削除する
@@ -41,7 +134,7 @@ public class InsertCommand : AsyncCommand<InsertSettings>
         return genresList;
     }
 
-    private static async Task<int> FetchAndStoreMovies(TMDbClient tmDbClient, CinemaContext dbContext, List<Genre> genresList, InsertSettings settings)
+    private static async Task FetchAndStoreMovies(TMDbClient tmDbClient, CinemaContext dbContext, List<Genre> genresList, InsertSettings settings)
     {
         SearchContainer<SearchMovie>? response = null;
         var currentPage = settings.BeginCount;
@@ -52,7 +145,6 @@ public class InsertCommand : AsyncCommand<InsertSettings>
             var moviesList = response.Results.Where(x => !string.IsNullOrWhiteSpace(x.BackdropPath) && !string.IsNullOrWhiteSpace(x.PosterPath));
             await AddMovies(dbContext, moviesList, settings, tmDbClient, genresList);
         }
-        return response.TotalPages;
     }
 
     private static async Task AddMovies(CinemaContext dbContext, IEnumerable<SearchMovie> moviesList, InsertSettings settings, TMDbClient tmDbClient, List<Genre> genresList)
