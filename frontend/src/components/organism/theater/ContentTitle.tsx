@@ -2,11 +2,14 @@ import { Flex } from '@/components/elements/box/Flex'
 import { Styles } from '@/types/styles'
 import React from 'react'
 
-const PageTitle = () => {
+type Props = {
+  label: string;
+};
+const ContentTitle = (props: Props) => {
   return (
     <>
       <Flex style={styles.container} direction='column' align='flex-start'>
-        <h1 style={styles.title}>アクセス</h1>
+        <h1 style={styles.title}>{props.label}</h1>
       </Flex>
     </>
   )
@@ -25,4 +28,4 @@ const styles: Styles = {
   },
 }
 
-export default PageTitle
+export default ContentTitle

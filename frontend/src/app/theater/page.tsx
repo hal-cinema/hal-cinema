@@ -1,7 +1,7 @@
 import { Flex } from '@/components/elements/box/Flex'
 import { Header } from '@/components/layouts/header/Header'
-import AccessMap from '@/components/organism/theater/AccessMap'
-import PageTitle from '@/components/organism/theater/PageTitle'
+import MapImage from '@/components/organism/theater/MapImage'
+import ContentTitle from '@/components/organism/theater/ContentTitle'
 import { Styles } from '@/types/styles'
 import React from 'react'
 
@@ -10,8 +10,10 @@ const page = () => {
   <>
     <Header/>
     <Flex style={styles.container} direction="column" align="center">
-      <PageTitle />
-      <AccessMap />
+      < ContentTitle label={"アクセス"} />
+      <MapImage src={"./theater/accessmap.svg"} />
+      < ContentTitle label={"館内マップ"} />
+      <MapImage src={"./theater/theaterMap.svg"} />
     </Flex>
   </>
   )

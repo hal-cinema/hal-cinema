@@ -3,12 +3,16 @@ import { Styles } from '@/types/styles'
 import Image from 'next/image'
 import React from 'react'
 
-const AccessMap = () => {
+type Props = {
+  src: string;
+};
+
+const AccessMap = ( props: Props ) => {
   return (
     <>
       <Flex style={styles.container} direction="column" align='center'>
         <Image
-          src="./theater/accessmap.svg"
+          src={props.src}
           alt="ʕ◔ϖ◔ʔ"
           width={1000}
           height={1000}
