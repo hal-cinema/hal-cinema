@@ -26,7 +26,7 @@ export const MovieList = (props: Props) => {
               style={styles.movie_box}
             >
               <Image
-                src={movie.poster_path}
+                src={movie.posterPath}
                 alt="movie"
                 width={134}
                 height={190}

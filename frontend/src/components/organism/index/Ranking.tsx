@@ -23,7 +23,7 @@ export const Ranking = (props: Props) => {
           >
             <Image src={`/home/no${index+1}.svg`} alt='no' width={45} height={45} style={styles.no}/>
             <Image
-              src={movie.poster_path}
+              src={movie.posterPath}
               width={106}
               height={150}
               alt="movies"
