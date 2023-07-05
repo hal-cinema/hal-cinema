@@ -15,6 +15,7 @@ const Index: NextPage = () => {
   useEffect(() => {
     ApiClient.getMovies().then((res) => console.log(res));
   }, []);
+  const main_news = ""
   const MAIN_NEWS = [
     {
       backdropPath: "/home/mainnews1.png",
