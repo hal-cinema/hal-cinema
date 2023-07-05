@@ -1,11 +1,21 @@
+using Database;
+using Database.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddIdentity<User, Role>().AddEntityFrameworkStores<CinemaContext>().AddDefaultTokenProviders();
+
+builder.Services.AddDbContext<CinemaContext>(optionsAction: x =>
+{
+    x.UseNpgsql(builder.Configuration["ConnectionStrings:DefaultConnection"]);
+});
 
 var app = builder.Build();
 
@@ -17,9 +27,16 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+
+var context = services.GetRequiredService<CinemaContext>();
+context.Database.EnsureCreated();
+
+context.SaveChanges();
 
 app.Run();

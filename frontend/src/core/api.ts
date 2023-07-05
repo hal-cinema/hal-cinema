@@ -2,7 +2,7 @@ import { Movie } from '@/types/movies';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Response } from "@/types/response";
 
-class BaseApiClient {
+export class BaseApiClient {
     private static readonly baseUrl = "/api/v1/";
     private static async sendRequest<T>(config: AxiosRequestConfig): Promise<Response<T>> {
         const response: AxiosResponse<Response<T>> = await axios(config);
@@ -54,7 +54,7 @@ class BaseApiClient {
 
 // TODO: Add more methods for other endpoints
 
-class MovieClient extends BaseApiClient {
+export class ApiClient extends BaseApiClient {
     public static async getMovies(): Promise<Response<Movie[]>> {
         return this.get<Movie[]>('movies');
     }

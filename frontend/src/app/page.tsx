@@ -6,32 +6,37 @@ import { MovieList } from "@/components/organism/index/MovieList";
 import { MainNews } from "@/components/organism/index/MainNewsList";
 import { Styles } from "@/types/styles";
 import { NextPage } from "next";
-import React from "react";
+import React, { useEffect } from "react";
 import { Flex } from "@/components/elements/box/Flex";
 import { Header } from "@/components/layouts/header/Header";
+import { ApiClient } from "@/core/api";
 
 const Index: NextPage = () => {
+  useEffect(() => {
+    ApiClient.getMovies().then((res) => console.log(res));
+  }, []);
+  const main_news = ""
   const MAIN_NEWS = [
     {
-      backdrop_path: "/home/mainnews1.png",
+      backdropPath: "/home/mainnews1.png",
     },
     {
-      backdrop_path: "/home/mainnews1.png",
+      backdropPath: "/home/mainnews1.png",
     },
     {
-      backdrop_path: "/home/mainnews1.png",
+      backdropPath: "/home/mainnews1.png",
     },
   ];
   const MOVIES = [
     {
-      poster_path: "/home/movie1.png",
+      posterPath: "/home/movie1.png",
       title: "劇場版アイドリッシュセブンLIVE...",
     },
     {
-      poster_path: "/home/movie2.png",
+      posterPath: "/home/movie2.png",
       title: "シナぷしゅ THE MOVIE ぷしゅ...",
     },
-    { poster_path: "/home/movie3.png", title: "劇場版TOKYO MER～走る緊..." },
+    { posterPath: "/home/movie3.png", title: "劇場版TOKYO MER～走る緊..." },
   ];
   const ADVERTISEMENTS = [
     { src: "/home/banner1.png", alt: "", path: "/" },
@@ -68,7 +73,7 @@ const Index: NextPage = () => {
 
   return (
     <>
-      <Header/>
+      <Header />
       <Flex style={styles.container} direction="column" align="center">
         <MainNews newsList={MAIN_NEWS} />
         <Flex style={styles.main_contents} justify="space-between">
