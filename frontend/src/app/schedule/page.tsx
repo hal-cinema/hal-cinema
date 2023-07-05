@@ -1,11 +1,21 @@
 "use client";
 import scheduleStyle from "@/app/schedule/schedule.module.css";
+import "./schedule.css";
 import { Header } from "@/components/layouts/header/Header";
 import { useSchewdule } from "./useSchedule";
 
+// Swiperモジュール
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// swiperで用意されているデフォルトののスタイル
+import "swiper/css";
+import "swiper/css/navigation";
+
+// ナビゲーションやページネーションのモジュール
+import { Navigation } from "swiper";
+
 const Schedule = () => {
   const weeks = useSchewdule();
-  console.log(weeks);
 
   return (
     <>
@@ -44,18 +54,29 @@ const Schedule = () => {
         </div>
         {/* スケジュールコンポーネント */}
         <div className={scheduleStyle.scheduleContainer}>
-          <div className={scheduleStyle.left}>
+          <div className={scheduleStyle.left} id="button_prev">
             <span>＜</span>
           </div>
-          <div className={scheduleStyle.days}>
+          <Swiper
+            slidesPerView={7}
+            spaceBetween={10}
+            navigation={{
+                // パラメータを設定
+                prevEl: "#button_prev",
+                nextEl: "#button_next"
+            }}
+            modules={[Navigation]}
+            className={scheduleStyle.days}
+            id="days"
+          >
             {weeks.map((week) => (
-              <div className={scheduleStyle.day}>
+              <SwiperSlide className={scheduleStyle.day} key={week.date}>
                 <span>{week.date}</span>
                 <span>（{week.day}）</span>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
-          <div className={scheduleStyle.right}>
+          </Swiper>
+          <div className={scheduleStyle.right} id="button_next">
             <span>＞</span>
           </div>
         </div>

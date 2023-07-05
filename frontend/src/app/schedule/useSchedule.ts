@@ -6,7 +6,6 @@ export const useSchewdule=()=>{
   
   const week = [...Array(14)].map((e, i) => {
     date.setDate(date.getDate() + 1);
-    console.log(date.getMonth() + 1 + "/" + date.getDate() + weekName[date.getDay()]);
     const tmp = {date:date.getMonth() + 1 + "/" + date.getDate(),day: weekName[date.getDay()]}
     return tmp;
   });
