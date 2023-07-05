@@ -12,8 +12,6 @@ const page = () => {
     <Flex style={styles.container} direction="column" align="center">
       < ContentTitle label={"アクセス"} />
       <MapImage src={"./theater/accessmap.svg"} />
-      < ContentTitle label={"館内マップ"} />
-      <MapImage src={"./theater/theaterMap.svg"} />
     </Flex>
   </>
   )
