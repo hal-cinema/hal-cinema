@@ -11,7 +11,7 @@ namespace Api.Controllers;
 public class SchedulesController : ControllerBase
 {
     private readonly CinemaContext _context;
-    private const int Limit = 10;
+    private const int Limit = 30;
     public SchedulesController(CinemaContext context)
     {
         _context = context;
@@ -26,7 +26,7 @@ public class SchedulesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<PageableResponse>> Get(int? nextPageToken) 
+    public async Task<ActionResult<PageableResponse>> Get(DateTime? start, DateTime? end, int? nextPageToken) 
     {
         IQueryable<Schedule> query = _context.Schedules;
         
@@ -34,7 +34,7 @@ public class SchedulesController : ControllerBase
         {
             query = query.Where(item => item.Id > nextPageToken);
         }
-        var items = await query.OrderBy(item => item.Id).Take(Limit).Include(x => x.Movie).ThenInclude(x => x.Genres).ToListAsync();
+        var items = await query.Where(x => x.StartAt >= (start ?? DateTime.MinValue) && (end ?? DateTime.MaxValue) >= x.EndAt).OrderBy(item => item.Id).Take(Limit).Include(x => x.Movie).ThenInclude(x => x.Genres).ToListAsync();
         return Ok(new PageableResponse(items.Count == Limit ? items.Last().Id : null, null, items));
     }
 }

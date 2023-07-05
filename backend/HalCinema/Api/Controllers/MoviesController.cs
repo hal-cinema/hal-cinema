@@ -26,7 +26,7 @@ public class MoviesController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<ActionResult<PageableResponse>> Get(int? nextPageToken)
+    public async Task<ActionResult<PageableResponse>> Get(DateTime? start, DateTime? end, int? nextPageToken)
     {
         IQueryable<Movie> query = _context.Movies;
         
@@ -34,7 +34,7 @@ public class MoviesController : ControllerBase
         {
             query = query.Where(item => item.Id > nextPageToken);
         }
-        var items = await query.OrderBy(item => item.Id).Take(Limit).Include(x => x.Genres).ToListAsync();
+        var items = await query.Where(x => x.ReleaseDate >= (start ?? DateTime.MinValue) && x.ReleaseDate <= (end ?? DateTime.MaxValue)).OrderBy(item => item.Id).Take(Limit).Include(x => x.Genres).ToListAsync();
         return new PageableResponse(items.Count == Limit ? items.Last().Id : null, null, items );
     }
 }
