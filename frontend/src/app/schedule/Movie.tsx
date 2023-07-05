@@ -1,13 +1,21 @@
 import scheduleStyle from "@/app/schedule/schedule.module.css";
 import ScreenInfo from "./ScreenInfo";
 
-type Props = {
-  title: string,
-  time: number,
-  imageURL: string
-}
+type ScreenSchedule = {
+  screen: string;
+  startTime: string;
+  endTime: string;
+  sale: string;
+};
 
-const Movie = ({title, time, imageURL}: Props) => {
+type MovieSchedule = {
+  title: string;
+  time: number;
+  imageURL: string;
+  screenSchedules: ScreenSchedule[];
+};
+
+const Movie = ({ title, time, imageURL, screenSchedules }: MovieSchedule) => {
   return (
     <div className={scheduleStyle.movieContainer}>
       <div className={scheduleStyle.movieTitle}>
@@ -18,12 +26,20 @@ const Movie = ({title, time, imageURL}: Props) => {
         <div className={scheduleStyle.movieImg}>
           <img src={imageURL} />
         </div>
-        <ScreenInfo screen="スクリーン2" startTime="10:30" endTime="12:00" sale="screenOnSale" />
-        <ScreenInfo screen="スクリーン3" startTime="14:30" endTime="16:00" sale="screenSold" />
-        <ScreenInfo screen="スクリーン4" startTime="15:30" endTime="17:00" sale="screenLow" />
+        {screenSchedules.map((screenSchedule, index) => {
+          return (
+            <ScreenInfo
+              key={index}
+              screen={screenSchedule.screen}
+              startTime={screenSchedule.startTime}
+              endTime={screenSchedule.endTime}
+              sale={screenSchedule.sale}
+            />
+          );
+        })}
       </div>
     </div>
   );
-}
+};
 
 export default Movie;

@@ -1,13 +1,13 @@
 import scheduleStyle from "@/app/schedule/schedule.module.css";
 
-type Props = {
+type ScreenSchedule = {
   screen: string;
   startTime: string;
   endTime: string;
   sale: string;
 };
 
-const ScreenInfo = ({ screen, startTime, endTime, sale }: Props) => {
+const ScreenInfo = ({ screen, startTime, endTime, sale }: ScreenSchedule) => {
   const saleState = (sale: string) => {
     switch (sale) {
       case "screenOnSale":
