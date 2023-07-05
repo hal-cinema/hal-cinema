@@ -6,12 +6,12 @@ import { usePathname } from "next/navigation";
 
 export const useCustomRouter = () => {
   const router = useRouter();
-  const isActive = (pathname: string) => usePathname() === pathname;
+  const IsActive = (pathname: string) => usePathname() === pathname;
   const handlePushRouter = (pathname: string) => {
     router.push(pathname);
   };
 
   const handleBackRouter = () => router.back();
 
-  return { isActive, handlePushRouter, handleBackRouter };
+  return { IsActive, handlePushRouter, handleBackRouter };
 };
