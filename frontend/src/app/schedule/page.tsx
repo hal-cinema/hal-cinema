@@ -1,59 +1,36 @@
 "use client";
+import { MouseEvent, useState } from "react";
 import scheduleStyle from "@/app/schedule/schedule.module.css";
 import "./schedule.css";
 import { Header } from "@/components/layouts/header/Header";
 import { useSchewdule } from "./useSchedule";
-
+import Movie from "./Movie";
+import Rating from "./Rating";
 // Swiperモジュール
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// swiperで用意されているデフォルトののスタイル
 import "swiper/css";
 import "swiper/css/navigation";
-
-// ナビゲーションやページネーションのモジュール
 import { Navigation } from "swiper";
 
 const Schedule = () => {
   const weeks = useSchewdule();
+
+  const [active, setActive] = useState(0);
+
+  const handleDateClick = (e: MouseEvent<HTMLDivElement>) => {
+    const { index } = e.currentTarget.dataset;
+    console.log(`${index}がクリックされた`);
+    setActive(+index!);
+  };
 
   return (
     <>
       <Header />
       <div className={scheduleStyle.wrap}>
         {/* レイティングコンポーネント */}
-        <div className={scheduleStyle.content}>
-          <div className={scheduleStyle.infoBox}>
-            <p>
-              <span className={scheduleStyle.infoIcon}>R18+</span>
-              18歳以上がご覧になれます
-            </p>
-            <p>
-              <span className={scheduleStyle.infoIcon}>R15+</span>
-              15歳以上がご覧になれます
-            </p>
-            <p>
-              <span className={scheduleStyle.infoIcon}>PG12</span>
-              小学生には、助言・指導が必要です
-            </p>
-          </div>
-          <div className={scheduleStyle.infoBox}>
-            <p>
-              <span className={scheduleStyle.typeIcon}>NEW</span>
-              上映開始週
-            </p>
-            <p>
-              <span className={scheduleStyle.typeIcon}>LAST</span>
-              上映ラスト週
-            </p>
-            <p>
-              <span className={scheduleStyle.typeIcon}>特別興行</span>
-              料金・会員サービスが通常と異なる場合があります
-            </p>
-          </div>
-        </div>
+        <Rating />
         {/* スケジュールコンポーネント */}
-        <div className={scheduleStyle.scheduleContainer}>
+        <div className={`${scheduleStyle.scheduleContainer} scheduleContainer`}>
           <div className={scheduleStyle.left} id="button_prev">
             <span>＜</span>
           </div>
@@ -61,16 +38,21 @@ const Schedule = () => {
             slidesPerView={7}
             spaceBetween={10}
             navigation={{
-                // パラメータを設定
-                prevEl: "#button_prev",
-                nextEl: "#button_next"
+              // パラメータを設定
+              prevEl: "#button_prev",
+              nextEl: "#button_next",
             }}
             modules={[Navigation]}
             className={scheduleStyle.days}
             id="days"
           >
-            {weeks.map((week) => (
-              <SwiperSlide className={scheduleStyle.day} key={week.date}>
+            {weeks.map((week, index) => (
+              <SwiperSlide
+                className={`${scheduleStyle.day} ${active === index ? scheduleStyle.active : scheduleStyle.disactive}`}
+                key={week.date}
+                data-index={index}
+                onClick={handleDateClick}
+              >
                 <span>{week.date}</span>
                 <span>（{week.day}）</span>
               </SwiperSlide>
@@ -81,148 +63,10 @@ const Schedule = () => {
           </div>
         </div>
         {/* 映画スケジュールコンポーネント */}
-        <div className={scheduleStyle.movieContainer}>
-          <div className={scheduleStyle.movieTitle}>
-            <span>ザ・スーパーマリオブラザーズ・ムービー</span>
-            <span>上映時間 110分</span>
-          </div>
-          <div className={scheduleStyle.movieInfo}>
-            <div className={scheduleStyle.movieImg}>
-              <img src="/marioMovie.png" />
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div className={scheduleStyle.screen}>スクリーン8</div>
-              <div className={scheduleStyle.screenTime}>
-                <span>9:25</span> ~ 11:15
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenOnSale}`}
-              >
-                <span>◎</span> 販売中
-              </div>
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div className={scheduleStyle.screen}>スクリーン7</div>
-              <div className={scheduleStyle.screenTime}>
-                <span>11:40</span> ~ 13:30
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenOnSale}`}
-              >
-                <span>◎</span> 販売中
-              </div>
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div className={scheduleStyle.screen}>スクリーン7</div>
-              <div className={scheduleStyle.screenTime}>
-                <span>13:50</span> ~ 15:40
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenOnSale}`}
-              >
-                <span>◎</span> 販売中
-              </div>
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div className={scheduleStyle.screen}>スクリーン8</div>
-              <div className={scheduleStyle.screenTime}>
-                <span>11:35</span> ~ 14:10
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenOnSale}`}
-              >
-                <span>◎</span> 販売中
-              </div>
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div className={scheduleStyle.screen}>スクリーン8</div>
-              <div className={scheduleStyle.screenTime}>
-                <span>16:10</span> ~ 18:00
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenOnSale}`}
-              >
-                <span>◎</span> 販売中
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={scheduleStyle.movieContainer}>
-          <div className={scheduleStyle.movieTitle}>
-            <span>字幕 ワイルド・スピード／ファイヤーブースト</span>
-            <span>上映時間 155分</span>
-          </div>
-          <div className={scheduleStyle.movieInfo}>
-            <div className={scheduleStyle.movieImg}>
-              <img src="/speedMovie.png" />
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div
-                className={`${scheduleStyle.screen} ${scheduleStyle.screenIMAX}`}
-              >
-                IMAX
-              </div>
-              <div className={scheduleStyle.screenTime}>
-                <span>9:50</span> ~ 12:25
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenOnSale}`}
-              >
-                <span>◎</span> 販売中
-              </div>
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div
-                className={`${scheduleStyle.screen} ${scheduleStyle.screenIMAX}`}
-              >
-                IMAX
-              </div>
-              <div className={scheduleStyle.screenTime}>
-                <span>16:15</span> ~ 18:50
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenLow}`}
-              >
-                <span>△</span> 残りわずか
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={scheduleStyle.movieContainer}>
-          <div className={scheduleStyle.movieTitle}>
-            <span>吹き替え ワイルド・スピード／ファイヤーブースト</span>
-            <span>上映時間 155分</span>
-          </div>
-          <div className={scheduleStyle.movieInfo}>
-            <div className={scheduleStyle.movieImg}>
-              <img src="/speedMovie.png" />
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div className={scheduleStyle.screen}>スクリーン3</div>
-              <div className={scheduleStyle.screenTime}>
-                <span>11:35</span> ~ 14:10
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenLow}`}
-              >
-                <span>△</span> 残りわずか
-              </div>
-            </div>
-            <div className={scheduleStyle.screenInfo}>
-              <div className={scheduleStyle.screen}>スクリーン3</div>
-              <div className={scheduleStyle.screenTime}>
-                <span>14:30</span> ~ 17:05
-              </div>
-              <div
-                className={`${scheduleStyle.screenSales} ${scheduleStyle.screenSold}`}
-              >
-                <span>✖️</span> 完売
-              </div>
-            </div>
-          </div>
-        </div>
+        <Movie title="ザ・スーパーマリオブラザーズ・ムービー" time={110} imageURL="/marioMovie.png" />
+        <Movie title="字幕 ワイルド・スピード／ファイヤーブースト" time={155} imageURL="/speedMovie.png" />
+        <Movie title="ザ・スーパーマリオブラザーズ・ムービー" time={110} imageURL="/marioMovie.png" />
+        <Movie title="字幕 ワイルド・スピード／ファイヤーブースト" time={155} imageURL="/speedMovie.png" />
       </div>
     </>
   );

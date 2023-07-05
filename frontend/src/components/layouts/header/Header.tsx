@@ -21,7 +21,7 @@ export const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 90) {
+      if (window.scrollY > 160) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -183,7 +183,7 @@ const styles: Styles = {
     alignItems: "end",
     justifyContent: "center",
     backgroundColor: "#eee",
-    boxShadow: "0 0 30px #555",
+    boxShadow: "0 0 30px #5555",
   },
   scrolled_nav: {
     width: "100%",
@@ -191,7 +191,7 @@ const styles: Styles = {
     display: "flex",
     justifyContent: "center",
     backgroundColor: "#eee",
-    boxShadow: "0 0 30px #555",
+    boxShadow: "0 0 30px #5555",
   },
   button: {
     color: "#333",
