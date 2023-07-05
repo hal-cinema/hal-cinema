@@ -1,0 +1,4 @@
+.swiper-button-disabled:hover {
+  background-color: #eee !important;
+  color: #ddd !important;
+}
