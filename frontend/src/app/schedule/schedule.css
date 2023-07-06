@@ -1,4 +1,4 @@
-.scheduleContainer .swiper-button-disabled:hover {
+.scheduleContainer .swiper-button-disabled {
   background-color: #eee !important;
   color: #ddd !important;
 }
