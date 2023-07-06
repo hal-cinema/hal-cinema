@@ -51,7 +51,7 @@ const TicketCalc = () => {
 
   return (
     <>
-      <Flex direction='column' align='flex-start'>
+      <Flex style={styles.container} direction='column'>
         {/* 各種チケットの枚数指定 */}
         {TICKETS.map((tickets, index) => (
           <TicketNum
@@ -80,12 +80,19 @@ const TicketCalc = () => {
             <p>円</p>
           </Flex>
         </Flex>
+
+        {/* 座席選択へ遷移 */}
+        <div style={styles.ticketSubmit}>座席選択へ進む</div>
       </Flex>
     </>
   )
 }
 
 const styles: Styles = {
+  container: {
+    padding: '15px 0',
+    height: '690px',
+  },
   resultBox: {
     width: '300px',
     padding: '15px 20px',
@@ -120,6 +127,18 @@ const styles: Styles = {
     fontSize: '2rem',
     color: '#EA3372',
     textAlign: 'right',
+  },
+  ticketSubmit: {
+    width: '300px',
+    textAlign: 'center',
+    fontSize: '1.2rem',
+    fontWeight: 'bold',
+    color: 'white',
+    padding: '15px 20px',
+    margin: '10px auto',
+    userSelect: 'none',
+    background: '#FF8C00',
+    borderRadius: '6px',
   },
 }
 
