@@ -1,8 +1,10 @@
 'use client'
 import { Flex } from '@/components/elements/box/Flex'
-import TicketNum from '@/components/elements/input/TicketNum'
+import TicketNum from '@/components/organism/reserve/TicketNum'
+import { IsTicketsState } from '@/hooks/reserve/useProgressState'
 import { Styles } from '@/types/styles'
 import React, { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 type Tickets = {
   name: string
@@ -35,6 +37,8 @@ const TicketCalc = () => {
   const [ticketTotal, setTicketTotal] = useState<{ [key: string]: number }>({})
   const [ticketCounts, setTicketCounts] = useState<{ [key: string]: number }>({})
 
+  const [selectTickets, setSelectTickets] = useRecoilState(IsTicketsState)
+
   const updateTicketCount = (name: string, count: number) => {
     setTicketCounts((prevState) => ({
       ...prevState,
@@ -48,10 +52,20 @@ const TicketCalc = () => {
       [name]: price * count
     }))
   }
-
+  const handleSeatsSelect = () => {
+    if(Object.values(ticketTotal).reduce((accept, current) => accept + current)){
+      setSelectTickets(false)
+    }
+  }
+  const handleTicketSelect = () => {
+    setSelectTickets(true)
+  }
   return (
     <>
       <Flex style={styles.container} direction='column'>
+        {/* オーバーレイ表示 */}
+        {!selectTickets && <div style={styles.overlay} onClick={handleTicketSelect} />}
+
         {/* 各種チケットの枚数指定 */}
         {TICKETS.map((tickets, index) => (
           <TicketNum
@@ -82,7 +96,7 @@ const TicketCalc = () => {
         </Flex>
 
         {/* 座席選択へ遷移 */}
-        <div style={styles.ticketSubmit}>座席選択へ進む</div>
+        <div style={styles.ticketSubmit} onClick={handleSeatsSelect}>座席選択へ進む</div>
       </Flex>
     </>
   )
@@ -90,8 +104,14 @@ const TicketCalc = () => {
 
 const styles: Styles = {
   container: {
-    padding: '15px 0',
     height: '690px',
+  },
+  overlay: {
+    position: 'absolute',
+    zIndex: 10,
+    width: '334px',
+    height: '690px',
+    background: '#07072B66'
   },
   resultBox: {
     width: '300px',
@@ -137,6 +157,7 @@ const styles: Styles = {
     padding: '15px 20px',
     margin: '10px auto',
     userSelect: 'none',
+    cursor: 'pointer',
     background: '#FF8C00',
     borderRadius: '6px',
   },
