@@ -94,13 +94,14 @@
   width: 45px;
   height: 108px;
   border-radius: 0 5px 5px 0;
-  color: #ddd;
+  background-color: #2A2D55;
+  color: #fff;
   font-weight: bold;
   font-size: 1.5em;
   position: absolute;
   left: 0;
   cursor: pointer;
-  transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out .1s;
 }
 
 .scheduleContainer .right {
@@ -110,19 +111,14 @@
   width: 45px;
   height: 108px;
   border-radius: 5px 0 0 5px;
-  color: #ddd;
+  background-color: #2A2D55;
+  color: #fff;
   font-weight: bold;
   font-size: 1.5em;
   position: absolute;
   right: 0;
   cursor: pointer;
-  transition: all .3s ease-in-out;
-}
-
-.scheduleContainer .right:hover,
-.scheduleContainer .left:hover {
-  background-color: #2A2D55;
-  color: #fff;
+  transition: all .3s ease-in-out .1s;
 }
 
 .scheduleContainer .days {
