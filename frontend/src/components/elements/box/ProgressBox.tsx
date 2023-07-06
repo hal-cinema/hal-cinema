@@ -11,8 +11,15 @@ const ProgressBox = (props: Props) => {
   return (
     <>
       <Flex style={styles.container} direction='row' justify='center' align='center'>
-        <Flex style={!props.isProgress ? styles.guideText : styles.guideTextActive} justify='center' align='center'>{props.label}</Flex>
-        {props.label!="完了" && <span style={!props.isProgress ? styles.arrow : styles.arrowActive}></span>}
+        <Flex style={!props.isProgress
+          ? styles.guideText
+          : styles.guideTextActive} justify='center' align='center'>{props.label}
+        </Flex>
+        {props.label!="完了" &&
+          <span style={!props.isProgress
+            ? styles.arrow
+            : styles.arrowActive}/>
+        }
       </Flex>
     </>
   )
