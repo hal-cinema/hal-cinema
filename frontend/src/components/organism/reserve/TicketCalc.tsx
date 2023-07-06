@@ -74,9 +74,11 @@ const TicketCalc = () => {
               </Flex>)
             : null
           )}
-          <div>
-            合計金額{Object.values(ticketTotal).reduce((accept, current) => accept + current, 0)}円
-          </div>
+          <Flex style={styles.totalBox} direction='row' align='baseline'>
+            <p>合計金額</p>
+            <p style={styles.totalPrice}>{Object.values(ticketTotal).reduce((accept, current) => accept + current, 0)}</p>
+            <p>円</p>
+          </Flex>
         </Flex>
       </Flex>
     </>
@@ -96,7 +98,6 @@ const styles: Styles = {
     width: '150px',
     fontSize: '0.9rem',
     fontWeight: 'bold',
-    margin: '5px 0',
   },
   label: {
     width: '80px',
@@ -107,6 +108,17 @@ const styles: Styles = {
     width: '20px',
     margin: '0 5px',
     fontSize: '1.5rem',
+    textAlign: 'right',
+  },
+  totalBox: {
+    width: '300px',
+    fontSize: '1.1rem',
+  },
+  totalPrice: {
+    width: '160px',
+    margin: '0 5px',
+    fontSize: '2rem',
+    color: '#EA3372',
     textAlign: 'right',
   },
 }
