@@ -1,6 +1,7 @@
-import { Styles } from '@/types/styles';
+'use client'
+import { Styles } from '@/types/styles'
 import React from 'react'
-import { Flex } from './Flex';
+import { Flex } from '../../elements/box/Flex'
 
 type Props = {
   label: string;
