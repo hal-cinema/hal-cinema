@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Flex } from '../box/Flex'
+import { Flex } from '../../elements/box/Flex'
 import { Styles } from '@/types/styles'
 
 type Props = {
