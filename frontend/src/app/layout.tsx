@@ -1,6 +1,8 @@
+'use client'
 import { useCustomRouter } from "@/hooks/useCustomRouter";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { RecoilRoot } from "recoil";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,16 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
-      <head>
-        <meta charSet="utf-8" />
-        <title>{metadata.title}</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/globals.css" />
-      </head>
-      <body className={inter.className}>
-        <main>{children}</main>
-      </body>
-    </html>
+    <RecoilRoot>
+      <html lang="ja">
+        <head>
+          <meta charSet="utf-8" />
+          <title>{metadata.title}</title>
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="stylesheet" href="/globals.css" />
+        </head>
+        <body className={inter.className}>
+          <main>{children}</main>
+        </body>
+      </html>
+    </RecoilRoot>
   );
 }
