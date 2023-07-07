@@ -1,6 +1,7 @@
 import { useCustomRouter } from "@/hooks/useCustomRouter";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/layouts/footer/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <main>{children}</main>
+        <Footer />  
       </body>
     </html>
   );
