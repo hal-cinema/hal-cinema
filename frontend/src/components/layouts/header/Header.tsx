@@ -67,7 +67,7 @@ export const Header = () => {
       name: "料金案内",
       sub: "Price",
       icon_path: "/header/price.svg",
-      path: "/price",
+      path: "/priceinfo",
     },
   ];
   return (
