@@ -1,4 +1,4 @@
-import scheduleStyle from "@/app/schedule/schedule.module.css";
+import scheduleStyle from "./schedule.module.css";
 import ScreenInfo from "./ScreenInfo";
 
 type ScreenSchedule = {

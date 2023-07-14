@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from "react";
-import scheduleStyle from "@/app/schedule/schedule.module.css";
+import scheduleStyle from "./schedule.module.css";
 import "./schedule.css";
 import { useSchewdule } from "./useSchedule";
 import { weeklySchedule } from "./WeeklySchedule";

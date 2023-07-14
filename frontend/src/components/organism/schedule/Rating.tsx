@@ -1,4 +1,5 @@
-import scheduleStyle from "@/app/schedule/schedule.module.css";const Rating = () => {
+import scheduleStyle from "./schedule.module.css";
+const Rating = () => {
   
   return (
     <div className={scheduleStyle.content}>
@@ -32,6 +33,6 @@ import scheduleStyle from "@/app/schedule/schedule.module.css";const Rating = ()
       </div>
     </div>
   );
-}
+};
 
 export default Rating;

@@ -18,7 +18,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "渇水",
       time: 115,
-      imageURL: "/kassuiMovie.png",
+      imageURL: "/schedule/kassuiMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -49,7 +49,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "2023 CRAVITY MASTERPIECE IN JAPAN",
       time: 210,
-      imageURL: "/cravityMovie.png",
+      imageURL: "/schedule/cravityMovie.png",
       screenSchedules: [
         {
           screen: "Screen 3",
@@ -68,7 +68,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "字幕 ワイルド・スピード／ファイヤーブースト",
       time: 155,
-      imageURL: "/speedMovie.png",
+      imageURL: "/schedule/speedMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -93,7 +93,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -118,7 +118,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "劇場版TOKYO MER 走る緊急救命室",
       time: 140,
-      imageURL: "/merMovie.png",
+      imageURL: "/schedule/merMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -137,7 +137,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "シナぷしゅ THE MOVIE ぷしゅほっぺにゅうワールド",
       time: 140,
-      imageURL: "/sinapuMovie.png",
+      imageURL: "/schedule/sinapuMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -164,7 +164,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "2023 CRAVITY MASTERPIECE IN JAPAN",
       time: 210,
-      imageURL: "/cravityMovie.png",
+      imageURL: "/schedule/cravityMovie.png",
       screenSchedules: [
         {
           screen: "Screen 3",
@@ -183,7 +183,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "字幕 ワイルド・スピード／ファイヤーブースト",
       time: 155,
-      imageURL: "/speedMovie.png",
+      imageURL: "/schedule/speedMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -208,7 +208,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -229,7 +229,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "劇場版TOKYO MER 走る緊急救命室",
       time: 140,
-      imageURL: "/merMovie.png",
+      imageURL: "/schedule/merMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -254,7 +254,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "シナぷしゅ THE MOVIE ぷしゅほっぺにゅうワールド",
       time: 140,
-      imageURL: "/sinapuMovie.png",
+      imageURL: "/schedule/sinapuMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -279,7 +279,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -300,7 +300,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "シナぷしゅ THE MOVIE ぷしゅほっぺにゅうワールド",
       time: 140,
-      imageURL: "/sinapuMovie.png",
+      imageURL: "/schedule/sinapuMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -325,7 +325,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "字幕 ワイルド・スピード／ファイヤーブースト",
       time: 155,
-      imageURL: "/speedMovie.png",
+      imageURL: "/schedule/speedMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -344,7 +344,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 5",
@@ -371,7 +371,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -396,7 +396,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "シナぷしゅ THE MOVIE ぷしゅほっぺにゅうワールド",
       time: 140,
-      imageURL: "/sinapuMovie.png",
+      imageURL: "/schedule/sinapuMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -423,7 +423,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "劇場版TOKYO MER 走る緊急救命室",
       time: 140,
-      imageURL: "/merMovie.png",
+      imageURL: "/schedule/merMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -442,7 +442,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "字幕 ワイルド・スピード／ファイヤーブースト",
       time: 155,
-      imageURL: "/speedMovie.png",
+      imageURL: "/schedule/speedMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -467,7 +467,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "2023 CRAVITY MASTERPIECE IN JAPAN",
       time: 210,
-      imageURL: "/cravityMovie.png",
+      imageURL: "/schedule/cravityMovie.png",
       screenSchedules: [
         {
           screen: "Screen 3",
@@ -488,7 +488,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "劇場版TOKYO MER 走る緊急救命室",
       time: 140,
-      imageURL: "/merMovie.png",
+      imageURL: "/schedule/merMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -513,7 +513,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 2",
@@ -546,7 +546,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "劇場版TOKYO MER 走る緊急救命室",
       time: 140,
-      imageURL: "/merMovie.png",
+      imageURL: "/schedule/merMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -571,7 +571,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "字幕 ワイルド・スピード／ファイヤーブースト",
       time: 155,
-      imageURL: "/speedMovie.png",
+      imageURL: "/schedule/speedMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -584,7 +584,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -611,7 +611,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "2023 CRAVITY MASTERPIECE IN JAPAN",
       time: 210,
-      imageURL: "/cravityMovie.png",
+      imageURL: "/schedule/cravityMovie.png",
       screenSchedules: [
         {
           screen: "Screen 3",
@@ -630,7 +630,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "劇場版TOKYO MER 走る緊急救命室",
       time: 140,
-      imageURL: "/merMovie.png",
+      imageURL: "/schedule/merMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -655,7 +655,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -682,7 +682,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "渇水",
       time: 115,
-      imageURL: "/kassuiMovie.png",
+      imageURL: "/schedule/kassuiMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -701,7 +701,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "字幕 ワイルド・スピード／ファイヤーブースト",
       time: 155,
-      imageURL: "/speedMovie.png",
+      imageURL: "schedule/speedMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -720,7 +720,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -747,7 +747,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "シナぷしゅ THE MOVIE ぷしゅほっぺにゅうワールド",
       time: 140,
-      imageURL: "/sinapuMovie.png",
+      imageURL: "/schedule/sinapuMovie.png",
       screenSchedules: [
         {
           screen: "Screen 4",
@@ -766,7 +766,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "劇場版TOKYO MER 走る緊急救命室",
       time: 140,
-      imageURL: "/merMovie.png",
+      imageURL: "/schedule/merMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -791,7 +791,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -818,7 +818,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "字幕 ワイルド・スピード／ファイヤーブースト",
       time: 155,
-      imageURL: "/speedMovie.png",
+      imageURL: "/schedule/speedMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -837,7 +837,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "渇水",
       time: 115,
-      imageURL: "/kassuiMovie.png",
+      imageURL: "/schedule/kassuiMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -856,7 +856,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 3",
@@ -883,7 +883,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -908,7 +908,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "劇場版TOKYO MER 走る緊急救命室",
       time: 140,
-      imageURL: "/merMovie.png",
+      imageURL: "/schedule/merMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -935,7 +935,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "シナぷしゅ THE MOVIE ぷしゅほっぺにゅうワールド",
       time: 140,
-      imageURL: "/sinapuMovie.png",
+      imageURL: "/schedule/sinapuMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -960,7 +960,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "字幕 ワイルド・スピード／ファイヤーブースト",
       time: 155,
-      imageURL: "/speedMovie.png",
+      imageURL: "/schedule/speedMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",
@@ -979,7 +979,7 @@ export const weeklySchedule: WeeklySchedule = [
     {
       title: "ザ・スーパーマリオブラザーズ・ムービー",
       time: 110,
-      imageURL: "/marioMovie.png",
+      imageURL: "/schedule/marioMovie.png",
       screenSchedules: [
         {
           screen: "Screen 1",

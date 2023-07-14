@@ -1,4 +1,5 @@
-import scheduleStyle from "@/app/schedule/schedule.module.css";
+import scheduleStyle from "./schedule.module.css";
+import { Styles } from "@/types/styles";
 
 type ScreenSchedule = {
   screen: string;
@@ -35,7 +36,7 @@ const ScreenInfo = ({ screen, startTime, endTime, sale }: ScreenSchedule) => {
   };
 
   return (
-    <div className={`${scheduleStyle.screenInfo} screenInfo`}>
+    <div style={styles.screenInfo} className={`${scheduleStyle.screenInfo} screenInfo`}>
       <div className={scheduleStyle.screen}>{screen}</div>
       <div className={scheduleStyle.screenTime}>
         <span>{startTime}</span> ~ {endTime}
@@ -51,5 +52,19 @@ const ScreenInfo = ({ screen, startTime, endTime, sale }: ScreenSchedule) => {
     </div>
   );
 };
+
+const styles: Styles = {
+  screenInfo: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-around",
+      alignItems: "center",
+      width: "150px",
+      height: "120px",
+      marginLeft: "14px",
+      backgroundColor: "#fff",
+      padding: "5px"
+  }
+}
 
 export default ScreenInfo;
